@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "nu-redesign",
+    "slug": "nu-redesign",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "nu-redesign"
+}
