@@ -1,21 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useMemo, useState } from 'react';
+import { StyleSheet, SafeAreaView } from 'react-native';
+import { Footer } from './components/footer';
+
+import { Header } from './components/header';
+import List from './components/listItem';
+import { PersonalCard } from './components/personalCard';
+
+const HEADER_HEIGHT = 240
 
 export default function App() {
+
+  const [headerHeight, setHeaderHeight] = useState(HEADER_HEIGHT);
+  const [foldHeader, setFoldHeader] = useState(false);
+
+  const RenderForeground = useMemo(() => {
+      return <PersonalCard height={headerHeight} foldHeader={foldHeader} />
+  }, [headerHeight, foldHeader])
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+        <StatusBar style="auto" />
+        <Header hide={foldHeader} />
+        {RenderForeground}
+        <List setHeaderHeight={setHeaderHeight} setFoldHeader={setFoldHeader}/>
+        <Footer />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    display: 'flex',
+    backgroundColor: '#9c44dc',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+  }
 });
