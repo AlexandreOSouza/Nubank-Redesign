@@ -21,7 +21,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
         <StatusBar style="auto" />
-        <Header hide={foldHeader} />
+        <Header />
         {RenderForeground}
         <List setHeaderHeight={setHeaderHeight} setFoldHeader={setFoldHeader}/>
         <Footer />
